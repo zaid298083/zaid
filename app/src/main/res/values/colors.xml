@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material Colors -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="online_green">#FF4CAF50</color>
+    <color name="offline_red">#FFF44336</color>
+    <color name="recommended_background">#1A4CAF50</color>
+
+    <!-- Sign-in Button Colors -->
+    <color name="common_signin_btn_dark_text_default">@android:color/white</color>
+    <color name="common_signin_btn_dark_text_pressed">@android:color/white</color>
+    <color name="common_signin_btn_dark_text_disabled">#ffaaaaaa</color>
+    <color name="common_signin_btn_dark_text_focused">@android:color/white</color>
+    <color name="common_signin_btn_light_text_default">#ff737373</color>
+    <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
+    <color name="common_signin_btn_light_text_disabled">#ffaaaaaa</color>
+    <color name="common_signin_btn_light_text_focused">#ff737373</color>
+    <color name="common_signin_btn_default_background">#ffdd4b39</color>
+
+    <!-- Action Bar -->
+    <color name="common_action_bar_splitter">#ffd2d2d2</color>
+
+    <!-- Wallet Colors -->
+    <color name="wallet_bright_foreground_holo_dark">#fff3f3f3</color>
+    <color name="wallet_dim_foreground_holo_dark">#ffbebebe</color>
+    <color name="wallet_dim_foreground_disabled_holo_dark">#80bebebe</color>
+    <color name="wallet_dim_foreground_inverse_holo_dark">#ff323232</color>
+    <color name="wallet_dim_foreground_inverse_disabled_holo_dark">#80323232</color>
+    <color name="wallet_bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="wallet_bright_foreground_holo_light">#ff000000</color>
+    <color name="wallet_hint_foreground_holo_light">#ff808080</color>
+    <color name="wallet_hint_foreground_holo_dark">#ff808080</color>
+    <color name="wallet_highlighted_text_holo_dark">#6633b5e5</color>
+    <color name="wallet_highlighted_text_holo_light">#6633b5e5</color>
+    <color name="wallet_holo_blue_light">#ff33b5e5</color>
+    <color name="wallet_link_text_light">#ff0000ee</color>
+
+    <!-- Game/App Colors -->
+    <color name="speed">#ffffc53d</color>
+    <color name="car_hp_line">#ff2626</color>
+    <color name="fuel_line">#ff7a00</color>
+
+    <!-- Basic Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#808080</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Theme Colors -->
+    <color name="colorPrimary">#1f1f1f</color>
+    <color name="colorAccent">#008BFF</color>
+
+    <!-- Shadow Colors -->
+    <color name="shadow_black">#4d000000</color>
+    <color name="shadow_white">#2bffffff</color>
+
+    <!-- Gradient Colors -->
+    <color name="gradient1">#ffce0e03</color>
+    <color name="gradient2">#fff75514</color>
+
+    <!-- Progress Bar Colors -->
+    <color name="progress_gray">#FFD8D8D8</color>
+    <color name="progress_gray_dark">#FF383838</color>
+    <color name="round_corner_progress_bar_background_default">#5f5f5f</color>
+    <color name="round_corner_progress_bar_progress_default">#7f7f7f</color>
+    <color name="round_corner_progress_bar_secondary_progress_default">@android:color/transparent</color>
+
+    <!-- Text Colors -->
+    <color name="secondaryText">#a8a8a8</color>
+    <color name="secondary_text_default_material_dark">#b3ffffff</color>
+    <color name="secondary_text_default_material_light">#8a000000</color>
+    <color name="secondary_text_disabled_material_dark">#36ffffff</color>
+    <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="menuText">#967474</color>
+
+    <!-- UI Component Colors -->
+    <color name="default_blue_light">#ff33b5e5</color>
+    <color name="black60">#99000000</color>
+
+    <!-- Status/Indicator Colors -->
+    <color name="orange1">#ff6318</color>
+    <color name="orange2">#c60000</color>
+    <color name="red">#c60000</color>
+    <color name="yellow">#fbc02d</color>
+    <color name="blue">#0037FF</color>
+
+    <!-- News Colors -->
+    <color name="selected_news_color">#fff75511</color>
+    <color name="default_news_color">#323232</color>
+</resources>

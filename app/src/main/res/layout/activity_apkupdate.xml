@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background_loader"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen">
+
+    <TextView
+        android:id="@+id/buildVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
+        android:textSize="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_br"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:lineSpacingMultiplier="0.9"
+        android:paddingStart="-3dp"
+        android:text="Nexion Online"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="50.0sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.504" />
+
+    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_5sdp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rcBackgroundColor="#25ffffff"
+        app:rcBackgroundPadding="0dp"
+        app:rcMax="100.0"
+        app:rcProgress="0.0"
+        app:rcProgressColor="@color/gradient1"
+        app:rcRadius="@dimen/_3sdp"
+        app:rcReverse="false"
+        app:rcSecondaryProgress="0.0"
+        app:rcSecondaryProgressColor="@color/gradient2" />
+
+    <TextView
+        android:id="@+id/loading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Baixando nova versão do launcher…"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/progress_bar"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+        style="@style/MontserratRegular14sp" />
+
+    <TextView
+        android:id="@+id/loading_percent"
+        style="@style/MontserratRegular14sp"
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/progress_bar"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

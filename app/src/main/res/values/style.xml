@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="tab_layout_title" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorAccent">#ff0000ee</item>
+    </style>
+    <style name="MontserratRegular14sp"><item name="android:textSize">14.0sp</item><item name="android:textColor">@android:color/white</item><item name="android:fontFamily">@font/montserrat_regular</item></style>
+    <style name="MontserratRegular12sp"><item name="android:textSize">12.0sp</item><item name="android:textColor">@android:color/white</item><item name="android:fontFamily">@font/montserrat_regular</item></style>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Fundo da barra de progresso (vidro) --><item android:id="@android:id/background">
+    <shape android:shape="rectangle">
+        <corners android:radius="12dp"/>
+        <solid android:color="#40FFFFFF"/> <!-- Cor branca com 25% de opacidade --></shape>
+</item>
+
+    <!-- Progresso da barra (azul) --><item android:id="@android:id/progress">
+    <clip>
+        <shape android:shape="rectangle">
+            <corners android:radius="12dp"/>
+            <solid android:color="#FF2196F3"/> <!-- Cor azul forte --></shape>
+    </clip>
+</item>
+</layer-list>

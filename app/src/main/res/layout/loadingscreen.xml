@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <ImageView
+        android:id="@+id/loadingBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/loading_bg" />
+
+    <VideoView
+        android:id="@+id/connectingVideo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:keepScreenOn="true"
+        android:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#55000000" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="14dp"
+        android:orientation="vertical"
+        android:gravity="end">
+
+        <!-- Music player -->
+        <LinearLayout
+            android:id="@+id/musicPlayerLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:background="@drawable/bg_music_pill"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp">
+
+            <TextView
+                android:id="@+id/musicTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#CCFFFFFF"
+                android:textSize="9sp"
+                android:text="PACMAN DE PANICAT, EU PREFIRO A R..."
+                android:maxWidth="165dp"
+                android:ellipsize="end"
+                android:singleLine="true" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageButton
+                    android:id="@+id/btnPrev"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_media_previous"
+                    android:scaleType="centerInside"
+                    android:contentDescription="@null"
+                    android:tint="#FFFFFF" />
+
+                <ImageButton
+                    android:id="@+id/btnPlayPause"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_media_play"
+                    android:scaleType="centerInside"
+                    android:contentDescription="@null"
+                    android:tint="#FFFFFF" />
+
+                <ImageButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_media_next"
+                    android:scaleType="centerInside"
+                    android:contentDescription="@null"
+                    android:tint="#FFFFFF" />
+
+                <SeekBar
+                    android:id="@+id/musicSeekbar"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:progressTint="#FFFFFF"
+                    android:thumbTint="#FFFFFF"
+                    android:max="15"
+                    android:progress="10" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Loading pill -->
+        <LinearLayout
+            android:id="@+id/loadingStatusLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_loading_pill"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
+
+            <TextView
+                android:id="@+id/loadingStatusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:text="Carregando Recursos..." />
+
+            <ProgressBar
+                android:id="@+id/loadingSpinner"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="5dp"
+                android:indeterminate="true"
+                android:indeterminateTint="#FFFFFF" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

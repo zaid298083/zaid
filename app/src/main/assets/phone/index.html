@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, viewport-fit=cover" />
+    <script src="../common/capital-responsive.js"></script>
+    <title>Celular Capital City</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true">
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5m6-7-7 7 7 7"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><path d="m21 21-4.3-4.3M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24"><path d="M12 5h.01M12 12h.01M12 19h.01"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4V8z"/><path d="M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.7 19.7 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.7 19.7 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9z"/></symbol>
+      <symbol id="i-phone-off" viewBox="0 0 24 24"><path d="M10.7 13.3a16 16 0 0 0 3.4 2.7l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9v3a2 2 0 0 1-2.2 2 19.7 19.7 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.7 19.7 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L7.4 9.7"/><path d="m3 3 18 18"/></symbol>
+      <symbol id="i-video" viewBox="0 0 24 24"><path d="M4 7h11v10H4z"/><path d="m15 11 5-3v8l-5-3z"/></symbol>
+      <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-9 8.4 9 9 0 0 1-4-.9l-5 1.5 1.6-4.6A8.4 8.4 0 1 1 21 11.5z"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"/><path d="M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v4"/></symbol>
+      <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7z"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></symbol>
+      <symbol id="i-clip" viewBox="0 0 24 24"><path d="m21.4 11.6-8.5 8.5a6 6 0 0 1-8.5-8.5l8.5-8.5a4 4 0 0 1 5.7 5.7l-8.6 8.5a2 2 0 1 1-2.8-2.8l7.8-7.8"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><path d="M6 10V8a6 6 0 0 1 12 0v2"/><path d="M5 10h14v11H5z"/></symbol>
+      <symbol id="i-image" viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="m4 15 4-4 5 5 3-3 4 4"/><path d="M15 9h.01"/></symbol>
+      <symbol id="i-location" viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11z"/><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9z"/><path d="M10 21h4"/></symbol>
+      <symbol id="i-help" viewBox="0 0 24 24"><path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.4-2.9 1.6-2.9 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 10h18"/><path d="M7 15h3"/></symbol>
+      <symbol id="i-swap" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 6h18"/><path d="M7 22l-4-4 4-4"/><path d="M21 18H3"/></symbol>
+      <symbol id="i-barcode" viewBox="0 0 24 24"><path d="M4 5v14M8 5v14M12 5v14M17 5v14M20 5v14"/></symbol>
+      <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z"/><path d="M9 8h6M9 12h6M9 16h4"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 16V3"/><path d="m7 8 5-5 5 5"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.5 6.2"/><path d="M3 12A9 9 0 0 1 18.5 5.8"/><path d="M18 2v4h4M6 22v-4H2"/></symbol>
+      <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 4h12v18l-6-4-6 4V4z"/></symbol>
+      <symbol id="i-delete" viewBox="0 0 24 24"><path d="M21 4H8l-6 8 6 8h13z"/><path d="m18 9-6 6M12 9l6 6"/></symbol>
+      <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7h18v12H3z"/><path d="M16 12h5v4h-5z"/><path d="M7 7V5h11v2"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M4 5h16v16H4z"/><path d="M8 3v4M16 3v4M4 11h16"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+      <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+      <symbol id="i-bluetooth" viewBox="0 0 24 24"><path d="m7 7 10 10-5 4V3l5 4L7 17"/></symbol>
+      <symbol id="i-volume" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8 8 0 0 1 0 12"/></symbol>
+      <symbol id="i-skip-back" viewBox="0 0 24 24"><path d="M19 20 9 12l10-8v16z"/><path d="M5 19V5"/></symbol>
+      <symbol id="i-skip-forward" viewBox="0 0 24 24"><path d="m5 4 10 8-10 8V4z"/><path d="M19 5v14"/></symbol>
+      <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></symbol>
+      <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 1 4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="m7 23-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol>
+      <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    </svg>
+
+    <main class="stage">
+      <div class="selfie-mask" id="selfieMask" aria-hidden="true">
+        <i data-mask="top"></i>
+        <i data-mask="right"></i>
+        <i data-mask="bottom"></i>
+        <i data-mask="left"></i>
+      </div>
+      <section class="phone-shell" aria-label="Celular">
+        <i class="side left-one"></i>
+        <i class="side left-two"></i>
+        <i class="side right-one"></i>
+        <div class="phone">
+          <div class="island"></div>
+          <div class="screen">
+            <div class="statusbar">
+              <span id="clock">00:00</span>
+              <button id="phoneHide" type="button" aria-label="Guardar celular">Guardar</button>
+              <span class="status-icons"><b>5G</b><span class="battery-percent">100%</span></span>
+            </div>
+
+            <section class="view active" data-view="home">
+              <div class="wallpaper"></div>
+              <div class="apps-grid">
+                <button class="home-app" type="button" data-open="whatsapp">
+                  <span class="app-art"><img src="assets/whatsapp.png" alt="" /></span>
+                  <strong>WhatsApp</strong>
+                  <em id="homeWhatsBadge" hidden>0</em>
+                </button>
+                <button class="home-app" type="button" data-open="sportfy">
+                  <span class="app-art sportfy-icon"><img src="assets/sportfy-logo.png" alt="" /></span>
+                  <strong>Spotify</strong>
+                </button>
+                <button class="home-app" type="button" data-open="camera">
+                  <span class="app-art camera-icon"><svg><use href="#i-camera" /></svg></span>
+                  <strong>Câmera</strong>
+                </button>
+                <button class="home-app" type="button" data-open="gallery">
+                  <span class="app-art gallery-icon"><svg><use href="#i-image" /></svg></span>
+                  <strong>Galeria</strong>
+                </button>
+              </div>
+              <div class="dock">
+                <button type="button"><svg><use href="#i-phone"/></svg></button>
+                <button type="button"><img src="assets/balaochat.png" alt="" /></button>
+                <button type="button"><svg><use href="#i-users"/></svg></button>
+              </div>
+            </section>
+
+            <section class="view app-view radarbot-view" data-view="radarbot">
+              <div class="radarbot-bg" aria-hidden="true"></div>
+              <header class="radarbot-top">
+                <button type="button" data-back="home" aria-label="Voltar"><svg><use href="#i-back"/></svg></button>
+                <button type="button" aria-label="Configuracoes"><svg><use href="#i-more"/></svg></button>
+              </header>
+              <div class="radarbot-brand">
+                <img src="assets/radarbot-logo.png" alt="RadarBot" />
+                <span>SEU <b>ALIADO</b> NAS RUAS</span>
+              </div>
+              <section class="radarbot-map-card">
+                <div class="radarbot-status-card" id="radarbotStatusCard">
+                  <i></i><span>SISTEMA</span><strong id="radarbotStatus">INATIVO</strong>
+                </div>
+                <div class="radarbot-map" id="radarbotMap">
+                  <div class="radarbot-map-grid" id="radarbotMapGrid"></div>
+                  <span class="radarbot-player-dot" aria-label="Sua posicao"></span>
+                </div>
+              </section>
+              <button class="radarbot-main-button" type="button" id="radarbotToggle">
+                <span><svg><use href="#i-play"/></svg></span>
+                <strong><small id="radarbotButtonVerb">INICIAR</small><b>RADAR BOT</b></strong>
+              </button>
+              <p class="radarbot-note"><svg><use href="#i-lock"/></svg><span id="radarbotHint">Sera mostrado radares proximos ao iniciar</span></p>
+            </section>
+
+            <section class="view app-view call-view" data-view="call">
+              <div class="call-glow" aria-hidden="true"></div>
+              <header class="call-head">
+                <button type="button" id="callBackButton"><svg><use href="#i-back"/></svg></button>
+                <span id="callStateLabel">Ligacao</span>
+              </header>
+              <div class="call-person">
+                <span class="avatar call-avatar" id="callAvatar">?</span>
+                <strong id="callName">Contato</strong>
+                <small id="callPhone">000-000</small>
+                <em id="callTimer">Chamando...</em>
+              </div>
+              <div class="call-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <button class="call-end" type="button" id="callEndButton" aria-label="Desligar"><svg><use href="#i-phone-off"/></svg></button>
+            </section>
+
+            <section class="view app-view whatsapp-screen" data-view="whatsapp" data-active-tab="chats">
+              <header class="wa-head">
+                <h1>WhatsApp</h1>
+                <div>
+                  <button type="button" id="whatsappCamera" aria-label="Abrir câmera"><svg><use href="#i-camera"/></svg></button>
+                  <button type="button" data-open="settings"><svg><use href="#i-more"/></svg></button>
+                </div>
+              </header>
+              <label class="search"><svg><use href="#i-search"/></svg><input id="chatSearch" type="search" placeholder="Pesquisar conversa" /></label>
+              <div class="filters"><button class="active" type="button" data-filter="all">Todas</button><button type="button" data-filter="unread">Nao lidas <span id="unreadFilterCount" hidden>0</span></button></div>
+              <div class="tab-page active" data-tab-page="chats"><div class="list" id="chatList"></div></div>
+              <div class="tab-page" data-tab-page="status"><button class="row status-me" type="button" id="newStatus"><span class="avatar" id="myStatusAvatar">?</span><span><strong>Meu status</strong><small id="myStatusNote">Nenhum status postado</small></span></button><p class="label">Status recentes</p><div class="list" id="statusList"></div></div>
+              <div class="tab-page" data-tab-page="groups"><p class="label">Grupos criados pelos jogadores</p><div class="list" id="groupList"></div></div>
+              <div class="tab-page" data-tab-page="calls" hidden><div class="list" id="callList"></div></div>
+              <button class="fab" type="button" data-open="contacts"><svg><use href="#i-plus"/></svg></button>
+              <div class="status-actions" aria-label="Acoes de status">
+                <button class="status-action" type="button" id="newStatusText" aria-label="Status de texto"><svg><use href="#i-plus"/></svg></button>
+                <button class="status-action" type="button" id="openStatusFile" aria-label="Enviar foto"><svg><use href="#i-clip"/></svg></button>
+                <button class="status-action" type="button" id="openStatusCamera" aria-label="Camera"><svg><use href="#i-camera"/></svg></button>
+              </div>
+              <nav class="wa-tabs">
+                <button class="active" type="button" data-tab="chats"><img src="assets/balaochat.png" alt="" /><span>Conversas</span><em id="chatTabBadge" hidden>0</em></button>
+                <button type="button" data-tab="status"><img src="assets/status.png" alt="" /><span>Status</span></button>
+                <button type="button" data-tab="groups"><svg><use href="#i-users"/></svg><span>Grupos</span></button>
+                <button type="button" data-tab="calls" hidden><svg><use href="#i-phone"/></svg><span>Ligacoes</span></button>
+              </nav>
+            </section>
+
+            <section class="view app-view bank-view bank-home" data-view="bank">
+              <header class="bank-hero">
+                <div class="bank-topline">
+                  <button type="button" aria-label="Notificacoes"><svg><use href="#i-bell"/></svg></button>
+                  <strong>mercantil</strong>
+                  <button type="button" aria-label="Ajuda"><svg><use href="#i-help"/></svg></button>
+                </div>
+                <button class="bank-person" type="button" data-open="bankAccount">
+                  <span class="bank-avatar"><svg><use href="#i-user"/></svg></span>
+                  <span><b>Ola, <em id="bankFirstName">Jogador</em></b><small>Agencia: <i id="bankAgency">0001</i> - Conta: <i id="bankAccountNumber">000000-0</i></small></span>
+                  <svg><use href="#i-back"/></svg>
+                </button>
+              </header>
+              <div class="bank-scroll home">
+                <button class="bank-card account" type="button" data-open="bankAccount">
+                  <span class="bank-card-title"><svg><use href="#i-wallet"/></svg><b>Conta corrente</b><i><svg><use href="#i-back"/></svg></i></span>
+                  <small>Saldo atual</small>
+                  <strong id="bankBalanceHome">R$ 0,00</strong>
+                </button>
+                <div class="bank-actions">
+                  <button type="button" data-open="bankPix"><img class="bank-pix-icon" src="assets/pix.png" alt="" /><span>Pix</span></button>
+                  <button type="button" data-open="bankInvoice"><svg><use href="#i-barcode"/></svg><span>Pagar</span></button>
+                </div>
+                <button class="bank-card credit" type="button" data-open="bankCard">
+                  <span class="bank-card-title"><svg><use href="#i-card"/></svg><b>Cartao de credito</b><i><svg><use href="#i-back"/></svg></i></span>
+                  <small>Fatura atual</small>
+                  <strong id="bankInvoiceHome">R$ 0,00</strong>
+                  <em>Limite disponivel: <span id="bankCreditAvailable">R$ 0,00</span></em>
+                  <span class="credit-track"><i id="bankCreditBar"></i></span>
+                </button>
+              </div>
+            </section>
+
+            <section class="view app-view bank-view" data-view="bankAccount">
+              <header class="bank-page-head"><button type="button" data-back="bank"><svg><use href="#i-back"/></svg></button><strong>Conta corrente</strong><button type="button"><svg><use href="#i-more"/></svg></button></header>
+              <div class="bank-scroll account">
+                <p class="bank-label">Saldo atual</p>
+                <h2 id="bankBalanceAccount">R$ 0,00</h2>
+                <div class="bank-flow">
+                  <span class="in"><svg><use href="#i-back"/></svg></span><span><b>Entrada</b><small>Ultimos 30 dias</small></span><strong id="bankMoneyIn">+ R$ 0,00</strong>
+                  <span class="out"><svg><use href="#i-back"/></svg></span><span><b>Saida</b><small>Ultimos 30 dias</small></span><strong id="bankMoneyOut">- R$ 0,00</strong>
+                </div>
+                <div class="bank-actions compact">
+                  <button type="button" data-open="bankPix"><img class="bank-pix-icon" src="assets/pix.png" alt="" /><span>Pix</span></button>
+                  <button type="button" data-open="bankInvoice"><svg><use href="#i-barcode"/></svg><span>Pagar</span></button>
+                </div>
+                <div class="bank-extract-tabs">
+                  <button class="active" type="button" data-bank-extract="in">Recebidos</button>
+                  <button type="button" data-bank-extract="out">Enviados</button>
+                </div>
+                <div class="bank-extract" id="bankExtract"></div>
+              </div>
+            </section>
+
+            <section class="view app-view bank-view" data-view="bankPix">
+              <header class="bank-page-head light"><button type="button" data-back="bank"><svg><use href="#i-back"/></svg></button><strong>Transferir para quem?</strong><button type="button" data-back="bank"><svg><use href="#i-x"/></svg></button></header>
+              <div class="bank-scroll pix-list">
+                <label class="bank-search"><input id="bankPixKey" inputmode="numeric" maxlength="10" placeholder="Digite o ID do jogador" /><button type="button" id="bankLookupPix"><svg><use href="#i-search"/></svg></button></label>
+                <button class="bank-primary" type="button" id="bankLookupManual">Transferir para outra pessoa</button>
+                <p class="bank-list-title">Mais recentes</p>
+                <div id="bankPixRecent"></div>
+                <p class="bank-list-title">Todos</p>
+                <div id="bankPixContacts"></div>
+              </div>
+            </section>
+
+            <section class="view app-view bank-view" data-view="bankAmount">
+              <header class="bank-page-head light"><button type="button" data-back="bankPix"><svg><use href="#i-back"/></svg></button><strong>Qual o valor?</strong><button type="button" data-back="bank"><svg><use href="#i-x"/></svg></button></header>
+              <div class="bank-amount-wrap">
+                <div class="bank-target-pill"><span id="bankTargetAvatar">?</span><b id="bankTargetName">Jogador</b><small>ID <i id="bankTargetId">0</i></small></div>
+                <label class="money-input"><span>VALOR</span><b>R$</b><input id="bankAmountInput" readonly placeholder="Digite o valor" /></label>
+                <p class="bank-balance-note">Saldo atual: <strong id="bankAmountBalance">R$ 0,00</strong></p>
+                <button class="bank-primary" type="button" id="bankContinueAmount">Continuar</button>
+              </div>
+              <div class="bank-keypad" id="bankKeypad">
+                <button type="button" data-key="1">1</button><button type="button" data-key="2">2<small>ABC</small></button><button type="button" data-key="3">3<small>DEF</small></button>
+                <button type="button" data-key="4">4<small>GHI</small></button><button type="button" data-key="5">5<small>JKL</small></button><button type="button" data-key="6">6<small>MNO</small></button>
+                <button type="button" data-key="7">7<small>PQRS</small></button><button type="button" data-key="8">8<small>TUV</small></button><button type="button" data-key="9">9<small>WXYZ</small></button>
+                <button type="button" data-key="clear">+ * #</button><button type="button" data-key="0">0</button><button type="button" data-key="back"><svg><use href="#i-delete"/></svg></button>
+              </div>
+            </section>
+
+            <section class="view app-view bank-view" data-view="bankReview">
+              <header class="bank-page-head light"><button type="button" data-back="bankAmount"><svg><use href="#i-back"/></svg></button><strong>Resumo da transferencia</strong><button type="button" data-back="bank"><svg><use href="#i-x"/></svg></button></header>
+              <div class="bank-scroll review">
+                <div class="bank-review-card" id="bankReviewCard"></div>
+                <button class="bank-primary bottom" type="button" id="bankConfirmTransfer">Confirmar e transferir</button>
+              </div>
+            </section>
+
+            <section class="view app-view bank-view" data-view="bankReceipt">
+              <header class="bank-page-head light"><button type="button" data-back="bank"><svg><use href="#i-back"/></svg></button><strong>Comprovante Pix</strong><button type="button" data-open="bankShare"><svg><use href="#i-share"/></svg></button></header>
+              <div class="bank-scroll receipt">
+                <span class="receipt-ok"><svg><use href="#i-check"/></svg></span>
+                <h2>Transferencia enviada</h2>
+                <div class="bank-review-card" id="bankReceiptCard"></div>
+                <button class="bank-primary" type="button" data-open="bankShare">Compartilhar comprovante</button>
+              </div>
+            </section>
+
+            <section class="view app-view bank-view" data-view="bankShare">
+              <header class="bank-page-head light"><button type="button" data-back="bankReceipt"><svg><use href="#i-back"/></svg></button><strong>Compartilhar no WhatsApp</strong><button type="button" data-back="bankReceipt"><svg><use href="#i-x"/></svg></button></header>
+              <div class="bank-scroll share">
+                <p class="bank-list-title">Contatos</p>
+                <div id="bankShareContacts"></div>
+              </div>
+            </section>
+
+            <section class="view app-view bank-view" data-view="bankCard">
+              <header class="bank-page-head"><button type="button" data-back="bank"><svg><use href="#i-back"/></svg></button><strong>Cartao de credito</strong><button type="button"><svg><use href="#i-more"/></svg></button></header>
+              <div class="bank-scroll card-page">
+                <div class="credit-plastic"><small>banco</small><b>mB</b><span id="bankCreditName">Jogador</span><em id="bankCreditLimit">Limite R$ 0,00</em></div>
+                <button class="bank-card" type="button" data-open="bankInvoice"><span class="bank-card-title"><svg><use href="#i-receipt"/></svg><b>Fatura atual</b><i><svg><use href="#i-back"/></svg></i></span><strong id="bankInvoiceCard">R$ 0,00</strong><em>Vencimento: <span id="bankInvoiceDue">em aberto</span></em></button>
+                <div class="bank-insight" id="bankCreditStatus"></div>
+              </div>
+            </section>
+
+            <section class="view app-view bank-view" data-view="bankInvoice">
+              <header class="bank-page-head light"><button type="button" data-back="bank"><svg><use href="#i-back"/></svg></button><strong>Fatura</strong><button type="button" data-back="bank"><svg><use href="#i-x"/></svg></button></header>
+              <div class="bank-scroll invoice">
+                <div class="invoice-total"><small>Proxima parcela</small><strong id="bankInvoiceAmount">R$ 0,00</strong><span>Vencimento: <b id="bankInvoiceDate">em aberto</b></span><span>Total pendente: <b id="bankInvoicePending">R$ 0,00</b></span></div>
+                <p class="bank-list-title invoice-title">Veiculos financiados</p>
+                <div class="bank-finances" id="bankFinances"></div>
+                <p class="bank-list-title invoice-title">Parcelas do financiamento</p>
+                <div class="bank-installments" id="bankInstallments"></div>
+                <button class="bank-primary" type="button" id="bankPayInvoice">Pagar selecionadas</button>
+                <div class="invoice-actions" id="bankFinanceActions">
+                  <button type="button" id="bankSettleFinancing">Quitar financiamento</button>
+                </div>
+                <div class="bank-insight danger" id="bankInvoiceWarning"></div>
+                <p class="bank-list-title invoice-title">Faturas pagas</p>
+                <div class="bank-invoice-history" id="bankInvoiceHistory"></div>
+              </div>
+            </section>
+
+            <section class="view app-view sportfy-view" data-view="sportfy" data-sportfy-tab="home">
+              <header class="sportfy-head">
+                <span><img src="assets/sportfy-logo.png" alt="" /></span>
+                <div><small>SPORTFY CAPITAL</small><strong id="sportfyGreeting">Bem-vindo</strong></div>
+                <button type="button" id="sportfyBtButton" aria-label="Conectar Bluetooth"><svg><use href="#i-bluetooth"/></svg></button>
+              </header>
+              <div class="sportfy-search">
+                <svg><use href="#i-search"/></svg>
+                <input id="sportfySearchInput" type="search" placeholder="Pesquisar musica ou cantor" autocomplete="off" />
+                <button type="button" id="sportfyClearSearch" aria-label="Limpar busca" hidden><svg><use href="#i-x"/></svg></button>
+              </div>
+              <nav class="sportfy-chips">
+                <button class="active" type="button" data-sportfy-filter="todos">Tudo</button>
+                <button type="button" data-sportfy-filter="funk">Funk</button>
+                <button type="button" data-sportfy-filter="trap">Trap</button>
+                <button type="button" data-sportfy-filter="eletronica">Eletronica</button>
+              </nav>
+              <section class="sportfy-page active" data-sportfy-page="home">
+                <div class="sportfy-quick-grid">
+                  <button type="button" data-sportfy-quick="favorites"><span><svg><use href="#i-heart"/></svg></span><strong>Musicas curtidas</strong></button>
+                  <button type="button" data-sportfy-quick="recent"><span><svg><use href="#i-music"/></svg></span><strong>Tocadas recentemente</strong></button>
+                  <button type="button" data-sportfy-quick="playlist"><span><svg><use href="#i-plus"/></svg></span><strong id="sportfyQuickPlaylistTitle">Criar playlist</strong></button>
+                  <button type="button" data-sportfy-quick="bluetooth"><span><svg><use href="#i-bluetooth"/></svg></span><strong>Som do veiculo</strong></button>
+                </div>
+                <div class="sportfy-banner">
+                  <img src="assets/sportfy-logo.png" alt="" />
+                  <span><b>O primeiro Sportfy para SAMP</b><small>Pesquise, toque e conecte no som do veiculo.</small></span>
+                </div>
+                <p class="sportfy-label" id="sportfyRecentTitle">Tocadas recentemente</p>
+                <div class="sportfy-empty" id="sportfyHomeEmpty">Ta esperando o que? Comece a escutar uma musica agora.</div>
+                <div class="sportfy-list" id="sportfyHomeList"></div>
+              </section>
+              <section class="sportfy-page" data-sportfy-page="search">
+                <div class="sportfy-empty" id="sportfySearchEmpty">Digite uma musica ou cantor para buscar.</div>
+                <div class="sportfy-list" id="sportfyResults"></div>
+              </section>
+              <section class="sportfy-page" data-sportfy-page="library">
+                <p class="sportfy-label">Playlists</p>
+                <form class="sportfy-playlist-form" id="sportfyPlaylistForm">
+                  <input id="sportfyPlaylistName" type="text" maxlength="32" placeholder="Nome da playlist" />
+                  <button type="submit" aria-label="Criar playlist"><svg><use href="#i-plus"/></svg></button>
+                </form>
+                <div class="sportfy-list compact" id="sportfyPlaylists"></div>
+                <p class="sportfy-label">Favoritas</p>
+                <div class="sportfy-list compact" id="sportfyFavorites"></div>
+                <p class="sportfy-label">Historico</p>
+                <div class="sportfy-list compact" id="sportfyHistory"></div>
+              </section>
+              <div class="sportfy-player" id="sportfyPlayer" hidden>
+                <button class="sportfy-summary" type="button" id="sportfyOpenNow">
+                  <img id="sportfyCover" alt="" />
+                  <span>
+                    <strong id="sportfyNowTitle">Nenhuma musica</strong>
+                    <small id="sportfyNowArtist">Sportfy Capital</small>
+                    <em><i id="sportfyMiniProgress"></i></em>
+                  </span>
+                </button>
+                <button type="button" id="sportfyLikeNow" aria-label="Favoritar"><svg><use href="#i-heart"/></svg></button>
+                <button type="button" id="sportfyPlayPause" aria-label="Tocar"><svg><use href="#i-play"/></svg></button>
+              </div>
+              <nav class="sportfy-tabs">
+                <button class="active" type="button" data-sportfy-tab="home"><svg><use href="#i-music"/></svg><span>Inicio</span></button>
+                <button type="button" data-sportfy-tab="search"><svg><use href="#i-search"/></svg><span>Buscar</span></button>
+                <button type="button" data-sportfy-tab="library"><svg><use href="#i-heart"/></svg><span>Biblioteca</span></button>
+              </nav>
+              <section class="sportfy-now-playing" id="sportfyNowPlaying" aria-hidden="true">
+                <header class="sportfy-now-head">
+                  <button type="button" id="sportfyCloseNow" aria-label="Voltar"><svg><use href="#i-chevron-down"/></svg></button>
+                  <span>Tocando agora</span>
+                  <button type="button" id="sportfyAddNow" aria-label="Adicionar"><svg><use href="#i-plus"/></svg></button>
+                </header>
+                <img id="sportfyNpCover" class="sportfy-np-cover" src="assets/sportfy-logo.png" alt="" />
+                <div class="sportfy-np-copy">
+                  <h2 id="sportfyNpTitle">Escolha uma musica</h2>
+                  <p id="sportfyNpArtist">Sportfy</p>
+                </div>
+                <div class="sportfy-progress-area">
+                  <input id="sportfyProgress" type="range" min="0" max="100" value="0" step="0.1" />
+                  <div><span id="sportfyCurrentTime">0:00</span><span id="sportfyDurationTime">0:00</span></div>
+                </div>
+                <div class="sportfy-np-controls">
+                  <button type="button" id="sportfyShuffle"><svg><use href="#i-shuffle"/></svg></button>
+                  <button type="button" id="sportfyPrevious"><svg><use href="#i-skip-back"/></svg></button>
+                  <button type="button" id="sportfyNpPlayPause"><svg><use href="#i-play"/></svg></button>
+                  <button type="button" id="sportfyNext"><svg><use href="#i-skip-forward"/></svg></button>
+                  <button type="button" id="sportfyRepeat"><svg><use href="#i-repeat"/></svg></button>
+                </div>
+                <div class="sportfy-device-strip">
+                  <button type="button" id="sportfyNpBluetooth"><svg><use href="#i-bluetooth"/></svg><span id="sportfyBluetoothLabel">Bluetooth desligado</span></button>
+                  <label><svg><use href="#i-volume"/></svg><input id="sportfyVolume" type="range" min="0" max="100" value="86" /></label>
+                </div>
+              </section>
+              <div class="sportfy-audio-host" id="sportfyAudioHost" aria-hidden="true"><div id="sportfyYoutubePlayer"></div><div id="sportfyFrameFallback"></div></div>
+              <div class="sportfy-audio-host" id="sportfyAmbientHost" aria-hidden="true"></div>
+            </section>
+
+            <section class="view app-view instagram-view" data-view="instagram" data-insta-tab="feed">
+              <header class="ig-head">
+                <div class="ig-brand"><img class="ig-brand-logo" src="assets/instagram-logo.png" alt="" /><strong>Instagram</strong></div>
+                <div>
+                  <button type="button" id="igActivityButton" aria-label="Atividade"><svg><use href="#i-heart"/></svg><em id="igTopBadge" hidden>0</em></button>
+                  <button type="button" id="igDirectButton" aria-label="Mensagens"><svg><use href="#i-send"/></svg></button>
+                </div>
+              </header>
+              <section class="ig-page active" data-ig-page="feed">
+                <div class="ig-stories" id="igStories"></div>
+                <div class="ig-feed" id="igFeed"></div>
+              </section>
+              <section class="ig-page" data-ig-page="explore">
+                <label class="ig-search"><svg><use href="#i-search"/></svg><input id="igSearchInput" type="search" placeholder="Buscar jogadores" autocomplete="off" /></label>
+                <div class="ig-users" id="igUsers"></div>
+              </section>
+              <section class="ig-page" data-ig-page="create">
+                <div class="ig-create-card">
+                  <span class="ig-create-glow"><svg><use href="#i-camera"/></svg></span>
+                  <strong>Criar publicacao</strong>
+                  <small>Use a camera do celular para postar no feed ou nos stories.</small>
+                  <button type="button" id="igCreatePost"><svg><use href="#i-image"/></svg><span>Publicar no feed</span></button>
+                  <button type="button" id="igCreateStory"><svg><use href="#i-camera"/></svg><span>Adicionar story</span></button>
+                </div>
+              </section>
+              <section class="ig-page" data-ig-page="activity">
+                <header class="ig-subhead"><strong>Atividade</strong><button type="button" id="igRefreshActivity"><svg><use href="#i-refresh"/></svg></button></header>
+                <div class="ig-activity" id="igActivity"></div>
+              </section>
+              <section class="ig-page" data-ig-page="profile">
+                <div class="ig-profile" id="igProfile"></div>
+                <div class="ig-profile-grid" id="igProfileGrid"></div>
+              </section>
+              <div class="ig-onboarding" id="igOnboarding" hidden>
+                <div class="ig-onboarding-card">
+                  <img src="assets/instagram-logo.png" alt="" />
+                  <small>Bem-vindo ao Instagram</small>
+                  <h2>Crie seu usuario</h2>
+                  <p>Escolha um nome unico para o seu perfil. Ele ficara conectado a sua conta do servidor.</p>
+                  <form id="igOnboardingForm">
+                    <label><span>Usuario</span><div><b>@</b><input id="igUsernameInput" type="text" maxlength="24" placeholder="seu.usuario" autocomplete="off" spellcheck="false" /></div></label>
+                    <em id="igUsernameHint">Use de 3 a 24 letras, numeros, ponto ou underline.</em>
+                    <button type="submit">Criar usuario</button>
+                  </form>
+                </div>
+              </div>
+              <div class="ig-edit-profile" id="igEditProfilePanel" hidden>
+                <header><button type="button" id="igCancelEditProfile"><svg><use href="#i-x"/></svg></button><strong>Editar perfil</strong><button type="button" id="igSaveEditProfile">Salvar</button></header>
+                <div class="ig-edit-profile-body">
+                  <button type="button" class="ig-edit-avatar" id="igEditAvatarCamera"><span id="igEditAvatarPreview"></span><b>Alterar foto</b><small>Tirar uma foto agora</small></button>
+                  <label><span>Bio</span><textarea id="igEditBioInput" maxlength="160" placeholder="Escreva sua bio"></textarea></label>
+                  <label><span>Link da foto</span><input id="igEditAvatarUrl" type="url" placeholder="https://site.com/foto.jpg" autocomplete="off" /></label>
+                </div>
+              </div>
+              <div class="ig-compose" id="igCompose" hidden>
+                <header><button type="button" id="igCancelCompose"><svg><use href="#i-x"/></svg></button><strong id="igComposeTitle">Nova publicacao</strong><button type="button" id="igPublishCompose">Publicar</button></header>
+                <img id="igComposeImage" alt="" />
+                <textarea id="igCaptionInput" maxlength="160" placeholder="Escreva uma legenda..."></textarea>
+              </div>
+              <div class="ig-post-detail" id="igPostDetail" hidden>
+                <header><button type="button" id="igClosePostDetail"><svg><use href="#i-back"/></svg></button><strong>Publicacao</strong></header>
+                <div class="ig-post-detail-body" id="igPostDetailBody"></div>
+              </div>
+              <div class="ig-comments-panel" id="igCommentsPanel" hidden>
+                <header><button type="button" id="igCloseComments"><svg><use href="#i-back"/></svg></button><strong>Comentarios</strong></header>
+                <div class="ig-comments-list" id="igCommentsList"></div>
+                <form id="igCommentForm"><input id="igCommentInput" maxlength="120" placeholder="Adicionar comentario" /><button type="submit"><svg><use href="#i-send"/></svg></button></form>
+              </div>
+              <div class="ig-story-viewer" id="igStoryViewer" hidden>
+                <div class="ig-story-progress" id="igStoryProgress"></div>
+                <button type="button" id="igCloseStory"><svg><use href="#i-x"/></svg></button>
+                <button type="button" id="igStoryMore" hidden><svg><use href="#i-more"/></svg></button>
+                <div class="ig-story-menu" id="igStoryMenu" hidden><button type="button" id="igDeleteStory">Excluir story</button></div>
+                <img id="igStoryImage" alt="" />
+                <span class="ig-story-meta"><strong id="igStoryName">Story</strong><small id="igStoryTime"></small></span>
+                <button type="button" class="ig-story-views" id="igStoryViews" hidden>0 visualizacoes</button>
+                <div class="ig-story-viewers-panel" id="igStoryViewersPanel" hidden><strong>Visualizaram</strong><div id="igStoryViewersList"></div></div>
+                <div class="ig-story-actions">
+                  <form id="igStoryReplyForm"><input id="igStoryReplyInput" maxlength="110" placeholder="Responder story" /><button type="submit"><svg><use href="#i-send"/></svg></button></form>
+                  <button type="button" id="igStoryLike" aria-label="Curtir story"><svg><use href="#i-heart"/></svg></button>
+                </div>
+              </div>
+              <div class="ig-direct" id="igDirectPanel" hidden>
+                <header><button type="button" id="igCloseDirect"><svg><use href="#i-back"/></svg></button><strong>Mensagens</strong></header>
+                <div class="ig-direct-list" id="igDirectList"></div>
+                <div class="ig-direct-thread" id="igDirectThread" hidden>
+                  <header class="ig-thread-head">
+                    <button type="button" id="igCloseThread"><svg><use href="#i-back"/></svg></button>
+                    <div id="igThreadPerson"></div>
+                    <button type="button" id="igThreadMore"><svg><use href="#i-more"/></svg></button>
+                    <div class="ig-thread-menu" id="igThreadMenu" hidden><button type="button" id="igBlockPeer" aria-label="Bloquear mensagens" title="Bloquear mensagens"><svg><use href="#i-lock"/></svg></button></div>
+                  </header>
+                  <div class="ig-direct-messages" id="igDirectMessages"></div>
+                  <form id="igDirectForm"><input id="igDirectInput" maxlength="120" placeholder="Mensagem" /><button type="submit"><svg><use href="#i-send"/></svg></button></form>
+                </div>
+              </div>
+              <nav class="ig-tabs">
+                <button class="active" type="button" data-ig-tab="feed"><svg><use href="#i-home"/></svg></button>
+                <button type="button" data-ig-tab="explore"><svg><use href="#i-search"/></svg></button>
+                <button type="button" data-ig-tab="create"><svg><use href="#i-plus"/></svg></button>
+                <button type="button" data-ig-tab="activity"><svg><use href="#i-heart"/></svg></button>
+                <button type="button" data-ig-tab="profile"><svg><use href="#i-user"/></svg></button>
+              </nav>
+            </section>
+
+            <section class="view app-view config-view" data-view="config">
+              <header class="config-head"><button type="button" data-back="home"><svg><use href="#i-back"/></svg></button><strong>Configuracoes</strong></header>
+              <div class="config-scroll">
+                <div class="config-hero">
+                  <span><img src="assets/config.png" alt="" /></span>
+                  <b>Ajustes do celular</b>
+                  <small>Plano de fundo, notificacoes e bloqueados</small>
+                </div>
+                <div class="config-group">
+                  <button class="config-row" type="button" data-open="configWallpaper">
+                    <i class="blue"><svg><use href="#i-image"/></svg></i>
+                    <span><strong>Plano de fundo</strong><small id="configWallpaperLabel">Principal</small></span>
+                    <em><svg><use href="#i-back"/></svg></em>
+                  </button>
+                  <button class="config-row" type="button" data-open="configNotifications">
+                    <i class="red"><svg><use href="#i-bell"/></svg></i>
+                    <span><strong>Notificacoes</strong><small>WhatsApp, Mercantil e jogo</small></span>
+                    <em><svg><use href="#i-back"/></svg></em>
+                  </button>
+                  <button class="config-row" type="button" data-open="configBlocked">
+                    <i class="dark"><svg><use href="#i-lock"/></svg></i>
+                    <span><strong>Bloqueados</strong><small id="configBlockedCount">Nenhum contato</small></span>
+                    <em><svg><use href="#i-back"/></svg></em>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="view app-view config-view" data-view="configNotifications">
+              <header class="config-head"><button type="button" data-back="config"><svg><use href="#i-back"/></svg></button><strong>Notificacoes</strong></header>
+              <div class="config-scroll">
+                <p class="config-note">Controle os avisos que aparecem no HUD quando o celular esta fechado.</p>
+                <div class="config-group">
+                  <button class="config-row config-toggle enabled" type="button" data-notify-toggle="whatsapp">
+                    <i class="green"><img src="assets/whatsapp.png" alt="" /></i>
+                    <span><strong>WhatsApp</strong><small>Mensagens, fotos, audios e chamadas</small></span>
+                    <b></b>
+                  </button>
+                  <button class="config-row config-toggle enabled" type="button" data-notify-toggle="bank">
+                    <i class="blue"><img src="assets/bancologo.png" alt="" /></i>
+                    <span><strong>Mercantil</strong><small>Pix recebido e movimentacoes</small></span>
+                    <b></b>
+                  </button>
+                  <button class="config-row config-toggle enabled" type="button" data-notify-toggle="game">
+                    <i class="red"><svg><use href="#i-bell"/></svg></i>
+                    <span><strong>Jogo</strong><small>Comandos, garagem, inventario e avisos</small></span>
+                    <b></b>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="view app-view config-view" data-view="configWallpaper">
+              <header class="config-head"><button type="button" data-back="config"><svg><use href="#i-back"/></svg></button><strong>Plano de fundo</strong></header>
+              <div class="config-scroll wallpaper-list">
+                <button class="wallpaper-option active" type="button" data-wallpaper="1">
+                  <span style="background-image:url('assets/wallpaper-1.webp')"></span>
+                  <b>Principal</b>
+                  <em><svg><use href="#i-check"/></svg></em>
+                </button>
+                <button class="wallpaper-option" type="button" data-wallpaper="2">
+                  <span style="background-image:url('assets/wallpaper-2.webp')"></span>
+                  <b>Imagem 2</b>
+                  <em><svg><use href="#i-check"/></svg></em>
+                </button>
+                <button class="wallpaper-option" type="button" data-wallpaper="3">
+                  <span style="background-image:url('assets/wallpaper-3.webp')"></span>
+                  <b>Imagem 3</b>
+                  <em><svg><use href="#i-check"/></svg></em>
+                </button>
+              </div>
+            </section>
+
+            <section class="view app-view config-view" data-view="configBlocked">
+              <header class="config-head"><button type="button" data-back="config"><svg><use href="#i-back"/></svg></button><strong>Bloqueados</strong></header>
+              <div class="config-scroll">
+                <p class="config-note">Contatos bloqueados deixam de gerar conversa nova ate voce desbloquear.</p>
+                <div class="config-blocked-list" id="configBlockedList"></div>
+              </div>
+            </section>
+
+            <section class="view app-view chat-view" data-view="chat">
+              <header class="chat-head">
+                <button type="button" data-back="whatsapp"><svg><use href="#i-back"/></svg></button>
+                <button class="chat-person" type="button"><span class="avatar" id="chatAvatar">?</span><span><strong id="chatName">Conversa</strong><small id="chatStatus">offline</small></span></button>
+                <button type="button"><svg><use href="#i-video"/></svg></button>
+                <button type="button" id="startCallButton" aria-label="Ligar" hidden disabled><svg><use href="#i-phone"/></svg></button>
+                <button type="button" id="chatMenuButton"><svg><use href="#i-more"/></svg></button>
+              </header>
+              <div class="chat-menu" id="chatMenu"><button type="button" id="saveCurrentContact">Salvar contato</button><button type="button" id="blockCurrentContact">Bloquear</button></div>
+              <div class="messages" id="messages"></div>
+              <div class="voice-recording" id="voiceRecording" hidden><span class="voice-pulse"></span><strong id="voiceTime">00:00</strong><small id="voiceHint">Solte para enviar</small></div>
+              <form class="composer" id="composer">
+                <div class="compose-box"><input id="messageInput" type="text" maxlength="120" placeholder="Mensagem" /><button type="button" id="attachButton" aria-label="Arquivos"><svg><use href="#i-clip"/></svg></button><button type="button" id="composerCamera" aria-label="Camera"><svg><use href="#i-camera"/></svg></button></div>
+                <button class="send" type="submit" aria-label="Enviar"><svg class="mic"><use href="#i-mic"/></svg><svg class="plane"><use href="#i-send"/></svg></button>
+              </form>
+              <div class="attachment-menu" id="attachmentMenu" aria-label="Enviar anexo">
+                <button type="button" id="attachCamera"><svg><use href="#i-camera"/></svg><span>Camera</span></button>
+                <button type="button" id="attachPhoto"><svg><use href="#i-image"/></svg><span>Foto</span></button>
+                <button type="button" id="attachLocation"><svg><use href="#i-location"/></svg><span>Local</span></button>
+              </div>
+            </section>
+
+            <section class="view app-view camera-view" data-view="camera">
+              <header class="camera-head">
+                <button type="button" id="cameraBack"><svg><use href="#i-back"/></svg></button>
+                <strong>Camera</strong>
+                <button type="button" id="cameraFlip"><svg><use href="#i-camera"/></svg></button>
+              </header>
+              <div class="camera-matte" aria-hidden="true">
+                <i data-matte="top"></i>
+                <i data-matte="right"></i>
+                <i data-matte="bottom"></i>
+                <i data-matte="left"></i>
+              </div>
+              <span class="camera-hint">Arraste para mirar</span>
+              <div class="camera-frame" id="cameraFrame">
+                <div class="camera-live" id="cameraLive"><span></span></div>
+                <img id="cameraPhoto" alt="" hidden />
+                <small id="cameraStatus">Ambiente</small>
+              </div>
+              <div class="camera-controls">
+                <button class="camera-small" type="button" id="cameraRetake" hidden><svg><use href="#i-back"/></svg></button>
+                <button class="camera-direction camera-left" type="button" data-camera-dx="-18" data-camera-dy="0" aria-label="Virar para esquerda">‹</button>
+                <button class="camera-shot" type="button" id="cameraShot"><i></i></button>
+                <button class="camera-direction camera-right" type="button" data-camera-dx="18" data-camera-dy="0" aria-label="Virar para direita">›</button>
+                <button class="camera-small" type="button" id="cameraVideo" aria-label="Gravar vídeo"><svg><use href="#i-video"/></svg></button>
+                <button class="camera-small send-photo" type="button" id="cameraSend" hidden><svg><use href="#i-send"/></svg></button>
+              </div>
+            </section>
+
+            <section class="view app-view simple-view gallery-view" data-view="gallery">
+              <header class="simple-head"><button type="button" data-back="home"><svg><use href="#i-back"/></svg></button><strong>Galeria</strong><label class="gallery-add" aria-label="Adicionar mídia"><svg><use href="#i-plus"/></svg><input id="galleryPicker" type="file" accept="image/*,video/*" multiple /></label></header>
+              <div class="gallery-grid" id="galleryGrid"><p class="gallery-empty">Nenhuma foto ou vídeo salvo.</p></div>
+            </section>
+
+            <section class="view app-view simple-view" data-view="contacts">
+              <header class="simple-head"><button type="button" data-back="whatsapp"><svg><use href="#i-back"/></svg></button><span><strong>Contatos</strong><small id="contactCount">0 contatos</small></span><button type="button" id="contactSearchButton"><svg><use href="#i-search"/></svg></button><button type="button"><svg><use href="#i-more"/></svg></button></header>
+              <div class="simple-list">
+                <button class="action-row" type="button" id="newGroup"><span><svg><use href="#i-users"/></svg></span>Novo grupo</button>
+                <button class="action-row" type="button" id="newContact"><span><svg><use href="#i-user"/></svg></span>Novo contato</button>
+                <p class="label">Contatos no WhatsApp</p>
+                <div id="contactList"></div>
+              </div>
+            </section>
+
+            <section class="view app-view simple-view" data-view="settings">
+              <header class="simple-head"><button type="button" data-back="whatsapp"><svg><use href="#i-back"/></svg></button><strong>Configuracoes</strong></header>
+              <button class="profile-card" type="button" data-open="profile"><span class="avatar photo"></span><span><strong id="settingsName">Jogador</strong><small id="settingsBio">Disponivel</small></span><em>Editar</em></button>
+              <div class="settings-list">
+                <button type="button" data-open="privacy"><svg><use href="#i-lock"/></svg><span><strong>Privacidade</strong><small>Visto por ultimo e confirmacoes</small></span></button>
+                <button type="button" data-open="chatSettings"><svg><use href="#i-message"/></svg><span><strong>Conversas</strong><small>Tema e historico</small></span></button>
+              </div>
+            </section>
+
+            <section class="view app-view simple-view" data-view="profile">
+              <header class="simple-head"><button type="button" data-back="settings"><svg><use href="#i-back"/></svg></button><strong>Perfil</strong></header>
+              <div class="profile-page"><span class="avatar photo big"></span><button class="green-link" type="button" id="editProfile">Editar</button><p><b>Nome</b><span id="profileName">Jogador</span></p><p><b>Bio</b><span id="profileBio">Disponivel</span></p><p><b>Telefone</b><span id="profilePhone"></span></p></div>
+            </section>
+
+            <section class="view app-view simple-view" data-view="privacy">
+              <header class="simple-head"><button type="button" data-back="settings"><svg><use href="#i-back"/></svg></button><strong>Privacidade</strong></header>
+              <div class="settings-list"><button type="button" id="lastSeen"><svg><use href="#i-lock"/></svg><span><strong>Visto por ultimo e online</strong><small id="lastSeenValue">Meus contatos</small></span></button><button class="toggle enabled" type="button" id="readReceipts"><svg><use href="#i-message"/></svg><span><strong>Confirmacoes de leitura</strong><small>Mostrar quando mensagens forem vistas</small></span><i></i></button></div>
+            </section>
+
+            <section class="view app-view simple-view" data-view="chatSettings">
+              <header class="simple-head"><button type="button" data-back="settings"><svg><use href="#i-back"/></svg></button><strong>Conversas</strong></header>
+              <div class="settings-list"><button type="button" data-open="themeSettings"><svg><use href="#i-message"/></svg><span><strong>Tema</strong><small>Escuro padrao</small></span></button><button type="button"><svg><use href="#i-message"/></svg><span><strong>Historico de conversas</strong><small>Mensagens ficam salvas no servidor</small></span></button></div>
+            </section>
+
+            <section class="view app-view simple-view" data-view="themeSettings">
+              <header class="simple-head"><button type="button" data-back="chatSettings"><svg><use href="#i-back"/></svg></button><strong>Tema</strong></header>
+              <div class="settings-list"><button class="toggle enabled" type="button"><svg><use href="#i-message"/></svg><span><strong>Escuro</strong><small>Visual principal do telefone</small></span><i></i></button></div>
+            </section>
+
+            <div class="recents" id="recents"><button class="recent-card" type="button" id="resumeApp"><span><img src="assets/whatsapp.png" alt="" /></span><strong id="recentTitle">WhatsApp</strong><small>Toque para continuar</small></button><button class="recent-close" type="button" id="closeRecentApp">Fechar</button></div>
+
+            <aside class="incoming-call" id="incomingCall" aria-live="assertive" hidden>
+              <span class="incoming-icon"><svg><use href="#i-phone"/></svg></span>
+              <span class="incoming-body"><strong id="incomingName">Ligacao</strong><small id="incomingText">Deseja atender?</small></span>
+              <span class="incoming-actions">
+                <button class="incoming-reject" type="button" id="rejectCallButton" aria-label="Recusar"><svg><use href="#i-phone-off"/></svg></button>
+                <button class="incoming-accept" type="button" id="acceptCallButton" aria-label="Atender"><svg><use href="#i-phone"/></svg></button>
+              </span>
+            </aside>
+
+            <div class="modal-layer" id="modalLayer">
+              <form class="modal" id="contactForm" data-modal="contact"><h2>Salvar contato</h2><label>Nome<input id="contactName" type="text" maxlength="32" placeholder="Nome do contato" /></label><label id="contactPhoneLabel">Telefone<input id="contactPhone" type="tel" inputmode="numeric" maxlength="7" placeholder="000-000" /></label><div><button type="button" data-close-modal>Cancelar</button><button type="submit">Salvar</button></div></form>
+              <form class="modal" id="profileForm" data-modal="profile"><h2>Editar perfil</h2><label>Bio<input id="editBio" type="text" maxlength="48" placeholder="Disponivel" /></label><div><button type="button" data-close-modal>Cancelar</button><button type="submit">Salvar</button></div></form>
+              <form class="modal" id="statusForm" data-modal="status"><h2>Novo status</h2><label>Status<input id="statusText" type="text" maxlength="70" placeholder="Digite seu status" /></label><div><button type="button" data-close-modal>Cancelar</button><button type="submit">Postar</button></div></form>
+              <form class="modal" id="groupForm" data-modal="group"><h2>Novo grupo</h2><label>Nome<input id="groupName" type="text" maxlength="32" placeholder="Nome do grupo" /></label><div><button type="button" data-close-modal>Cancelar</button><button type="submit">Criar</button></div></form>
+            </div>
+
+            <nav class="system-nav">
+              <button type="button" id="systemRecent" aria-label="Alternar"><span class="recent-icon"></span></button>
+              <button type="button" id="systemHome" aria-label="Inicio"><span class="home-icon"></span></button>
+              <button type="button" id="systemBack" aria-label="Voltar"><span class="back-icon"></span></button>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

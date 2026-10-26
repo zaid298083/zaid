@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Metrópoles Online</string>
+    <string name="nexion_web_client_id" translatable="false">668087728132-vmod0oieknj1ak930akg0u8vo0mgffrj.apps.googleusercontent.com</string>
+    <string name="action_settings">Settings</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="dialog_join_from_launcher_msg">Você precisa entrar no jogo usando o launcher</string>
+    <string name="dialog_join_from_launcher_ok">Aceitar</string>
+    <string name="online_count">Online: %1$s/%2$s</string>
+    <string name="our_servers">Nossos servidores</string>
+    <string name="donate_pay"><u>Recarregar saldo</u></string>
+    <string name="new_graphics"><u>Melhorias gráficas</u></string>
+    <string name="nick_name"><font color="#FCF7F7">Seu nick. </font>(exemplo: Name_Surname)</string>
+    <string name="privacy"><u>Política de privacidade</u></string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>
