@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     private View launcherAuthScreen;
     private String selectedServer = "ТЕСТ";
-    private String serverPort = "4140";
+    private String serverPort = "1596";
     private static final int PERMISSION_REQUEST_CODE = 1000;
     private boolean permissionsGranted = false;
     private boolean isInitialLoad = true;
@@ -734,7 +734,7 @@ public class MainActivity extends AppCompatActivity {
         if (!serverIniFile.exists()) {
             try {
                 writeIniValue(serverIniFile, "server", "name", "ТЕСТ");
-                writeIniValue(serverIniFile, "server", "port", "4140");
+                writeIniValue(serverIniFile, "server", "port", "1596");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -758,7 +758,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             selectedServer = "ТЕСТ";
-            serverPort = "4140";
+            serverPort = "1596";
         }
     }
 
@@ -787,7 +787,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             selectedServer = "ТЕСТ";
-            serverPort = "4140";
+            serverPort = "1596";
         }
     }
 
