@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "PR x64"
+include ':app'
+
+// O telefone Flutter é consumido como AAR para manter compatibilidade com o host AGP 8.2.1.

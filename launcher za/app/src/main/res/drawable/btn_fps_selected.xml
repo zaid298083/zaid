@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Estado selecionado do botão FPS -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Cor de fundo (você pode alterar a cor) -->
+    <solid android:color="#40FFFFFF" />
+
+    <!-- Cantos arredondados -->
+    <corners android:radius="8dp" />
+
+</shape>

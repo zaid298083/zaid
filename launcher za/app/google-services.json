@@ -1,0 +1,113 @@
+{
+  "project_info": {
+    "project_number": "668087728132",
+    "project_id": "ssamp-f732f",
+    "storage_bucket": "ssamp-f732f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668087728132:android:a20e6cb142f3d575ac5d51",
+        "android_client_info": {
+          "package_name": "com.lurion.rp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668087728132-hehjt7bt88lars4t6u8co8tiq9nb4nvf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lurion.rp",
+            "certificate_hash": "9e8265f673504570a19337f1ab8b747c8cfff390"
+          }
+        },
+        {
+          "client_id": "668087728132-vmod0oieknj1ak930akg0u8vo0mgffrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWPreVJGJo-mWewnjjxzOOcOFTmYUBXtA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668087728132-vmod0oieknj1ak930akg0u8vo0mgffrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668087728132:android:e1259d2642698081ac5d51",
+        "android_client_info": {
+          "package_name": "com.nexion.online"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668087728132-g8adjsorbdhseaekit03erf8p8dqu97n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nexion.online",
+            "certificate_hash": "9e8265f673504570a19337f1ab8b747c8cfff390"
+          }
+        },
+        {
+          "client_id": "668087728132-vmod0oieknj1ak930akg0u8vo0mgffrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWPreVJGJo-mWewnjjxzOOcOFTmYUBXtA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668087728132-vmod0oieknj1ak930akg0u8vo0mgffrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668087728132:android:39a6ccfe531e9ac2ac5d51",
+        "android_client_info": {
+          "package_name": "com.russia.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668087728132-vmod0oieknj1ak930akg0u8vo0mgffrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWPreVJGJo-mWewnjjxzOOcOFTmYUBXtA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668087728132-vmod0oieknj1ak930akg0u8vo0mgffrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

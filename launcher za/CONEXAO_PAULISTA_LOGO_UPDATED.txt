@@ -1,0 +1,3 @@
+Updated the top launcher logo from Nexion/Metrópoles to the CONEXÃO PAULISTA wordmark from the supplied artwork.
+Updated file: app/src/main/res/drawable/nexion_logo.png (475x267)
+Updated accessibility label in: app/src/main/res/layout/activity_main.xml

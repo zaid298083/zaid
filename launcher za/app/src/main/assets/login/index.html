@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول والتسجيل</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --green:#00e889; --muted:#6e7775; --line:rgba(255,255,255,.12); }
+        * { box-sizing:border-box; }
+        html, body { margin:0; width:100%; min-height:100%; background:#030605; color:#f2f5f3; font-family:Inter,Arial,sans-serif; }
+        body { overflow-x:hidden; overflow-y:auto; }
+        .login-page { min-height:100vh; position:relative; overflow:hidden; background:#030605; }
+        .login-page::before { content:""; position:fixed; inset:0; background:linear-gradient(270deg,#030605 0%,#030605 42%,rgba(3,6,5,.86) 63%,rgba(3,6,5,.56) 100%); z-index:0; pointer-events:none; }
+        .topbar { position:relative; z-index:3; height:108px; display:flex; align-items:flex-start; justify-content:space-between; padding:30px 30px 0; }
+        .tabs { display:flex; gap:27px; align-items:center; }
+        .tab { border:0; background:none; color:#69716f; font-size:14px; padding:8px 0 12px; cursor:pointer; position:relative; }
+        .tab.active { color:var(--green); }
+        .tab.active::after { content:""; position:absolute; left:0; right:0; bottom:0; height:2px; background:var(--green); box-shadow:0 0 10px rgba(0,232,137,.45); }
+        .brand-mark { position:absolute; left:50%; top:12px; transform:translateX(-50%); width:122px; height:92px; border:1px solid rgba(0,232,137,.22); border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.28); }
+        .brand-mark img { width:106px; height:auto; object-fit:contain; }
+        .now-playing { display:flex; align-items:center; gap:8px; color:#87908d; font-size:12px; }
+        .now-playing strong { display:block; color:#e8efeb; font-size:15px; margin-left:14px; }
+        .now-playing span { align-self:flex-start; margin-top:3px; }
+        .pause-btn { cursor:pointer; transition:background .2s; border:0; color:#05140d; background:var(--green); width:42px; height:42px; border-radius:0 4px 4px 0; font-weight:900; font-size:16px; clip-path:polygon(0 0,84% 0,100% 100%,15% 100%); }
+        .auth-shell { position:relative; z-index:2; min-height:calc(100vh - 108px); display:grid; grid-template-columns:46% 54%; }
+        .auth-panel { padding:70px 30px 120px 0; width:min(520px,90%); }
+        .eyebrow { color:var(--green); font-weight:800; font-size:11px; margin-bottom:21px; letter-spacing:0; }
+        .eyebrow span { display:inline-block; width:24px; height:2px; background:var(--green); vertical-align:middle; margin-inline-end:8px; }
+        h1 { font-size:42px; line-height:1.05; margin:0 0 12px; letter-spacing:0; }
+        .subtitle { color:#737c79; font-size:14px; line-height:1.55; margin:0 0 28px; }
+        .auth-form { width:340px; }
+        .hidden-form { display:none !important; }
+        .field { position:relative; width:100%; height:58px; display:flex; align-items:center; margin-bottom:11px; border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.34); border-radius:7px; }
+        .field:focus-within { border-color:rgba(0,232,137,.66); box-shadow:0 0 0 3px rgba(0,232,137,.07); }
+        .field-icon { color:#7c8582; width:42px; text-align:center; font-size:17px; }
+        .field input { flex:1; height:100%; background:transparent; border:0; outline:0; color:#eaf1ed; font-size:14px; padding:0 0 0 14px; }
+        .field input::placeholder { color:#616b68; }
+        .eye { border:0; background:none; color:#65716d; margin-left:13px; cursor:pointer; }
+        .primary-btn { width:100%; height:59px; border:0; border-radius:7px; margin-top:13px; background:var(--green); color:#04130c; font-size:17px; font-weight:800; display:flex; justify-content:space-between; align-items:center; padding:0 20px; cursor:pointer; box-shadow:0 8px 24px rgba(0,232,137,.12); }
+        .primary-btn b { font-size:24px; font-weight:400; }
+        .divider { width:340px; display:flex; align-items:center; gap:10px; margin:3px 0 20px; color:#59625f; }
+        .divider span { height:1px; background:var(--line); flex:1; }
+        .divider b { font-size:16px; font-weight:300; }
+        .access-note { color:#656e6b; font-size:11px; line-height:1.5; margin-top:0; }
+        .recovery-panel { width:340px; }
+        .recovery-icon { color:var(--green); font-size:31px; margin-bottom:12px; }
+        .recovery-panel p { color:#89928f; font-size:13px; line-height:1.5; }
+        .character-panel { min-height:calc(100vh - 108px); position:relative; }
+        .character-art { position:absolute; inset:0; background:url("conexao_paulista_character.png") 50% 50% / auto 100% no-repeat; filter:saturate(.9) contrast(1.05); }
+        .footer-left, .footer-right { position:absolute; z-index:4; bottom:27px; color:#68716e; font-size:10px; letter-spacing:0; }
+        .footer-left { left:30px; letter-spacing:0; color:#596561; }
+        .footer-left i, .footer-right i { display:inline-block; width:24px; height:2px; background:var(--green); vertical-align:middle; margin-inline-end:9px; }
+        .footer-left span { color:var(--green); margin-inline-start:18px; font-size:18px; }
+        .footer-right { right:30px; }
+        .toast.show { transform:translateY(0); opacity:1; }
+        .toast { position:fixed; z-index:10; right:25px; bottom:24px; transform:translateY(80px); opacity:0; transition:.3s; background:#0b1611; border:1px solid #274136; color:#e9f2ed; padding:13px 17px; border-radius:7px; display:flex; gap:10px; font-size:13px; }
+
+        .gate { position:fixed; inset:0; z-index:20; display:flex; align-items:center; justify-content:center; background:rgba(3,6,5,.78); padding:20px; }
+        .gate.gone { display:none; }
+        .gate-box { width:100%; max-width:340px; background:#0b1611; border:1px solid #274136; border-radius:12px; padding:22px 20px; box-shadow:0 12px 40px rgba(0,0,0,.55); }
+        .gate-box h2 { margin:0 0 4px; font-size:20px; }
+        .gate-box p { margin:0 0 16px; color:#89928f; font-size:13px; }
+        .gate-btn { width:100%; height:50px; margin-bottom:10px; border-radius:8px; border:1px solid rgba(0,232,137,.45); background:transparent; color:#eaf1ed; font-size:15px; font-weight:700; cursor:pointer; }
+        .gate-btn.main { background:var(--green); color:#04130c; border-color:var(--green); }
+        .gate-back { background:none; border:0; color:#7c8582; font-size:13px; cursor:pointer; padding:6px 0 0; }
+        .gate-box .field { height:50px; padding:0 14px; }
+        .gate-box .field input { padding:0; text-align:center; letter-spacing:3px; direction:ltr; }
+        @media (max-width:800px) { body { overflow:auto; } .topbar { height:84px; padding:20px 18px 0; } .brand-mark,.now-playing { display:none; } .auth-shell { display:block; min-height:calc(100vh - 84px); } .character-panel { display:none; } .auth-panel { padding:55px 22px 100px; width:100%; } .auth-form,.divider,.recovery-panel { width:100%; max-width:380px; } h1 { font-size:35px; } .footer-right { display:none; } }
+    </style>
+</head>
+<body class="login-page">
+    <div class="gate" id="gate">
+        <div class="gate-box">
+            <div id="gateChoose">
+                <h2>أهلاً بك</h2>
+                <p>كيف تريد الدخول؟</p>
+                <button class="gate-btn main" type="button" onclick="gateEmail()">دخول / تسجيل بالبريد الإلكتروني</button>
+                <button class="gate-btn" type="button" onclick="gateShowCode()">الدخول بالرمز فقط</button>
+            </div>
+            <div id="gateCode" class="hidden-form">
+                <h2>رمز الدخول</h2>
+                <p>اكتب رمزك للدخول مباشرة.</p>
+                <label class="field"><input type="text" id="gateCodeInput" placeholder="الرمز" autocomplete="off" autocapitalize="characters"></label>
+                <button class="gate-btn main" type="button" onclick="gateSubmitCode()">دخول</button>
+                <button class="gate-back" type="button" onclick="gateBack()">→ رجوع</button>
+            </div>
+        </div>
+    </div>
+    <header class="topbar">
+        <div class="tabs" role="tablist">
+            <button class="tab active" id="tabLogin" onclick="setAuthMode('login')">دخول</button>
+            <button class="tab" id="tabRegister" onclick="setAuthMode('register')">تسجيل</button>
+            <button class="tab" id="tabRecovery" onclick="setAuthMode('recovery')">استرجاع</button>
+        </div>
+        <div class="brand-mark" aria-label="Conexão Paulista"><img src="conexao_paulista_logo.png" alt="Conexão Paulista"></div>
+        <div class="now-playing">
+            <span>يعمل الآن:</span>
+            <strong>Chefin - 10 Carros</strong>
+            <button class="pause-btn" id="musicToggle" aria-label="إيقاف">Ⅱ</button>
+        </div>
+    </header>
+
+    <audio id="loginMusic" src="loading_bg.opus" loop preload="auto"></audio>
+    <main class="auth-shell">
+        <section class="auth-panel" id="cardContainer">
+            <div class="eyebrow"><span></span> ابدأ الآن</div>
+            <h1 id="formTitle">أنشئ حسابك</h1>
+            <p class="subtitle" id="formSubtitle">سجّل بياناتك بالأسفل لإنشاء<br>حسابك والاستمتاع بكل المزايا.</p>
+
+            <form id="loginForm" onsubmit="handleLogin(event)" class="auth-form hidden-form">
+                <label class="field"><span class="field-icon">♙</span><input type="email" id="loginEmail" required placeholder="البريد الإلكتروني"></label>
+                <label class="field"><span class="field-icon">▣</span><input type="password" id="loginPassword" required placeholder="كلمة المرور"><button type="button" class="eye" onclick="togglePassword('loginPassword', this)">◉</button></label>
+                <button class="primary-btn" type="submit"><span>دخول</span><b>←</b></button>
+            </form>
+
+            <form id="registerForm" onsubmit="handleRegister(event)" class="auth-form">
+                <label class="field"><span class="field-icon">♙</span><input type="text" id="regFullname" required placeholder="اسم المستخدم"></label>
+                <label class="field"><span class="field-icon">✉</span><input type="email" id="regEmail" required placeholder="البريد الإلكتروني"></label>
+                <label class="field"><span class="field-icon">▣</span><input type="password" id="registerPassword" required placeholder="كلمة المرور"><button type="button" class="eye" onclick="togglePassword('registerPassword', this)">◉</button></label>
+                <button class="primary-btn" type="submit"><span>تسجيل</span><b>←</b></button>
+            </form>
+
+            <div id="recoveryPanel" class="recovery-panel hidden-form">
+                <div class="recovery-icon">↻</div>
+                <p>اكتب بريدك الإلكتروني لاسترجاع حسابك.</p>
+                <label class="field"><span class="field-icon">✉</span><input type="email" id="recoveryEmail" placeholder="البريد الإلكتروني"></label>
+                <button class="primary-btn" type="button" onclick="showToast('تم إرسال الطلب!')"><span>استرجاع الحساب</span><b>←</b></button>
+            </div>
+
+            <div class="divider"><span></span><b>+</b><span></span></div>
+            <p class="access-note">أنت الآن في لوحة الدخول. اختر أحد<br>الخيارات المتاحة واملأ بياناتك.</p>
+        </section>
+
+        <section class="character-panel" aria-label="Conexão Paulista">
+            <div class="character-art"></div>
+        </section>
+    </main>
+
+    <footer class="footer-left"><i></i> CONEXÃO PAULISTA <span>‹</span></footer>
+    <footer class="footer-right"><i></i> مساحتك تبدأ من هنا</footer>
+
+    <div id="toast" class="toast"><span id="toastIcon">•</span><span id="toastMessage">إشعار</span></div>
+    <script>
+        // Inicializar ícones do Lucide
+        lucide.createIcons();
+
+        const loginMusic = document.getElementById('loginMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        function startLoginMusic() {
+            if (!loginMusic) return;
+            loginMusic.volume = 0.42;
+            const promise = loginMusic.play();
+            if (promise && promise.catch) promise.catch(function() {});
+        }
+        function toggleLoginMusic() {
+            if (!loginMusic) return;
+            if (loginMusic.paused) { startLoginMusic(); musicToggle.textContent = 'Ⅱ'; }
+            else { loginMusic.pause(); musicToggle.textContent = '▶'; }
+        }
+        if (musicToggle) musicToggle.addEventListener('click', toggleLoginMusic);
+        window.addEventListener('pointerdown', startLoginMusic, { once: true });
+        window.addEventListener('touchstart', startLoginMusic, { once: true });
+
+
+        // ============================================================
+        // PONTE COM O JOGO (window.AuthBridge é injetado pelo Android,
+        // igual ao banco: o HTML conversa com o servidor via packet 254)
+        // ============================================================
+
+
+        // ===== Tela inicial: e-mail ou só código =====
+        function gateEmail() { document.getElementById('gate').classList.add('gone'); setAuthMode('login'); }
+        function gateShowCode() {
+            document.getElementById('gateChoose').classList.add('hidden-form');
+            document.getElementById('gateCode').classList.remove('hidden-form');
+            document.getElementById('gateCodeInput').focus();
+        }
+        function gateBack() {
+            document.getElementById('gateCode').classList.add('hidden-form');
+            document.getElementById('gateChoose').classList.remove('hidden-form');
+        }
+        function gateSubmitCode() {
+            if (window.__authBusy) return;
+            const code = document.getElementById('gateCodeInput').value.trim();
+            if (!code) { showToast('اكتب الرمز', 'error'); return; }
+            if (!window.AuthBridge || typeof window.AuthBridge.code !== 'function') {
+                showToast('الجسر غير متاح (افتح داخل اللعبة)', 'error');
+                return;
+            }
+            window.__authBusy = true;
+            window.AuthBridge.code(code);
+        }
+
+        // Alternar entre Login e Registo (Efeito Flip Card)
+        function toggleCard() { setAuthMode('register'); }
+
+        function setAuthMode(mode) {
+            const login = document.getElementById('loginForm');
+            const register = document.getElementById('registerForm');
+            const recovery = document.getElementById('recoveryPanel');
+            const title = document.getElementById('formTitle');
+            const subtitle = document.getElementById('formSubtitle');
+            document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+            document.getElementById('tab' + mode.charAt(0).toUpperCase() + mode.slice(1)).classList.add('active');
+            login.classList.toggle('hidden-form', mode !== 'login');
+            register.classList.toggle('hidden-form', mode !== 'register');
+            recovery.classList.toggle('hidden-form', mode !== 'recovery');
+            if (mode === 'login') { title.textContent = 'سجّل دخولك'; subtitle.innerHTML = 'أدخل بياناتك لمتابعة<br>دخولك إلى السيرفر.'; }
+            if (mode === 'register') { title.textContent = 'أنشئ حسابك'; subtitle.innerHTML = 'سجّل بياناتك بالأسفل لإنشاء<br>حسابك والاستمتاع بكل المزايا.'; }
+            if (mode === 'recovery') { title.textContent = 'استرجع حسابك'; subtitle.innerHTML = 'سنرسل التعليمات إلى<br>بريدك الإلكتروني المسجل.'; }
+        }
+
+        // Alternar visibilidade da palavra-passe
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const icon = btn.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = '<i data-lucide="eye-off" class="w-5 h-5"></i>';
+            } else {
+                input.type = 'password';
+                btn.innerHTML = '<i data-lucide="eye" class="w-5 h-5"></i>';
+            }
+            lucide.createIcons();
+        }
+
+        // Tratar Submissão do Login -> envia ao servidor (packet 254, cmd LOGIN)
+        function handleLogin(event) {
+            event.preventDefault();
+            if (window.__authBusy) return;
+
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            if (!window.AuthBridge || typeof window.AuthBridge.login !== 'function') {
+                showToast('الجسر غير متاح (افتح داخل اللعبة)', 'error');
+                return;
+            }
+            window.__authBusy = true;
+            window.AuthBridge.login(email, password);
+        }
+
+        // Tratar Submissão do Registo -> envia ao servidor (packet 254, cmd REGISTER)
+        function handleRegister(event) {
+            event.preventDefault();
+            if (window.__authBusy) return;
+
+            const fullname = document.getElementById('regFullname').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+
+            if (!window.AuthBridge || typeof window.AuthBridge.register !== 'function') {
+                showToast('الجسر غير متاح (افتح داخل اللعبة)', 'error');
+                return;
+            }
+            window.__authBusy = true;
+            window.AuthBridge.register(fullname, email, password);
+        }
+
+        // API chamada pelo NATIVO (C++ -> Java -> JS)
+        // AuthOpen: o servidor abriu a interface ({ player: "Nick" })
+        window.AuthOpen = function (payload) {
+            try { payload = typeof payload === 'string' ? JSON.parse(payload) : payload; } catch (e) { payload = null; }
+            if (payload && payload.player) {
+                const hint = document.getElementById('loginHint');
+                if (hint) hint.textContent = 'سجّل دخولك للمتابعة باسم ' + payload.player;
+            }
+        };
+
+        // AuthResult: resposta do servidor ({ ok: true|false, msg: "..." })
+        window.AuthResult = function (res) {
+            try { res = typeof res === 'string' ? JSON.parse(res) : res; } catch (e) { res = null; }
+            window.__authBusy = false;
+            if (res && res.ok) {
+                showToast(res.msg || 'تم بنجاح!', 'success');
+                document.getElementById('gate').classList.add('gone');
+                // O servidor fecha a interface e libera o spawn em seguida.
+            } else {
+                showToast(res && res.msg ? res.msg : 'حدث خطأ. حاول مرة أخرى.', 'error');
+            }
+        };
+
+        // Sistema Simples de Toast
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMessage.textContent = message;
+
+            if (type === 'success') {
+                toastIcon.setAttribute('data-lucide', 'check-circle-2');
+                toastIcon.className = 'w-5 h-5 text-emerald-400';
+            } else if (type === 'error') {
+                toastIcon.setAttribute('data-lucide', 'alert-circle');
+                toastIcon.className = 'w-5 h-5 text-red-400';
+            } else {
+                toastIcon.setAttribute('data-lucide', 'info');
+                toastIcon.className = 'w-5 h-5 text-indigo-400';
+            }
+            lucide.createIcons();
+
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
